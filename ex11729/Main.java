@@ -35,5 +35,5 @@ public class Main {
 		hanoi(n,1,2,3);
 		
 	}
-
+	
 }
