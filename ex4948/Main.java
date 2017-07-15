@@ -1,7 +1,7 @@
 package ex4948;
 
 /**
- * º£¸£Æ®¶û °øÁØ(¼Ò¼ö°¹¼ö ±¸ÇÏ±â) - 2017/04/21 - Complete
+ * ë² ë¥´íŠ¸ëž‘ ê³µì¤€(ì†Œìˆ˜ê°¯ìˆ˜ êµ¬í•˜ê¸°) - 2017/04/21 - Complete
  * */
 import java.util.ArrayList;
 import java.util.List;

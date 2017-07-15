@@ -1,7 +1,7 @@
 package ex2965;
 
 /**
- * Impl(Ä»°Å·ç ¼¼¸¶¸®) - 2017/05/14 - Complete
+ * Impl(ìº¥ê±°ë£¨ ì„¸ë§ˆë¦¬) - 2017/05/14 - Complete
  * */
 import java.util.Scanner;
 
