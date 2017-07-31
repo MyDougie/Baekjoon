@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Main {
 
+	static int dir[][] = {{0,1}, {1,0}, {0,-1}, {-1,0}};
+	
 	static boolean rangeCheck(int x, int y, int length) {
 		return (x>=0 && x<length && y>=0 && y<length) ? true : false;
 	}
@@ -16,6 +18,17 @@ public class Main {
 		char ch = arr[x][y];
 		int length = arr.length;
 		
+		for(int i=0; i<4; i++) {
+			int xx = x + dir[i][0];
+			int yy = y + dir[i][1];
+			
+			//범위체크 먼저해야 IndexOutOfBoundsException이 안난다.
+			if(rangeCheck(xx, yy, length) && !visited[xx][yy] && ch == arr[xx][yy]) {
+				dfs(arr, visited, xx, yy);
+			}
+		}
+		
+		/*
 		if(rangeCheck(x+1, y, length) && ch == arr[x+1][y] && !visited[x+1][y]) {
 			dfs(arr, visited, x+1, y);
 		}if(rangeCheck(x, y+1, length) && ch == arr[x][y+1] && !visited[x][y+1]) {
@@ -25,7 +38,7 @@ public class Main {
 		}if(rangeCheck(x, y-1, length) && ch == arr[x][y-1] && !visited[x][y-1]) {
 			dfs(arr, visited, x, y-1);
 		}
-			
+		*/	
 			
 	}
 	
