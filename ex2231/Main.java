@@ -10,13 +10,6 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		final int m = 999999+9+9+9+9+9+10;
-		
-		int arr[] = new int [m+1];
-		
-		for(int i=1; i<=m; i++) {
-			arr[i] = Integer.MAX_VALUE;//분해합 저장
-		}
 		
 		int cnt = 0;//자릿수
 		int temp = n;
@@ -25,6 +18,7 @@ public class Main {
 			cnt++;
 		}
 		
+		int min = Integer.MAX_VALUE;
 		for(int i=n-9*cnt; i<=n; i++) {
 			//분해합구하고
 			String str = i+"";
@@ -33,13 +27,13 @@ public class Main {
 				divideSum += (int)str.charAt(j)-'0';
 			}
 			
-			//System.out.println("divSum : " + divideSum);
-			
 			//더 작으면 배열에 저장	
-			arr[divideSum] = Math.min(arr[divideSum], i);
+			if(divideSum==n) {
+				min = Math.min(min, i);
+			}
 		}
 		
-		System.out.println((arr[n]!=Integer.MAX_VALUE) ? arr[n] : 0);
+		System.out.println((min!=Integer.MAX_VALUE) ? min : 0);
 		
 	}
 
