@@ -1,7 +1,7 @@
 package ex14501;
 
 /**
- * DP(퇴사) - 2017/09/06 - Park Taegyu
+ * DP, DFS(퇴사) - 2017/09/06 - Park Taegyu
  * */
 import java.util.Scanner;
 
@@ -10,6 +10,7 @@ public class Main {
 	static int n;
 	static int t[], p[];
 	static int dp [];
+	static int max;
 	
 	void input() {
 		Scanner sc = new Scanner(System.in);
@@ -26,7 +27,7 @@ public class Main {
 	}
 	
 	
-	void solve() {
+	void solve1() {
 		for(int i=2; i<=n; i++) {
 			for(int j=1; j<i; j++) {
 				if(i-j >= t[j]) {
@@ -45,9 +46,27 @@ public class Main {
 		
 	}
 	
+	void solve2() {
+		dfs(1,0);
+		System.out.println(max);
+	}
+	
+	void dfs(int day, int sum) {
+		if(day == n+1) {
+			System.out.println("sum : " + sum);
+			max = Math.max(max, sum);
+			return;
+		}
+		
+		if(day + t[day] <= n+1) dfs(day + t[day], sum + p[day]);
+		if(day + 1 <= n+1) dfs(day+1, sum);
+		
+	}
+	
 	public static void main(String[] args) {
 		Main main = new Main();
 		main.input();
-		main.solve();
+		//main.solve1();
+		main.solve2();
 	}
 }
