@@ -6,7 +6,7 @@ package ex1182;
 import java.util.Scanner;
 
 public class Main {
-
+/*
 	static int [] makeBinary(int num, int N) {
 		int arr [] = new int [N];
 
@@ -52,5 +52,42 @@ public class Main {
 		System.out.println(result);
 		
 	}
-
+*/
+	
+	static int n, s;
+	static int arr[];
+	static int ans;
+	void process() {
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		s = sc.nextInt();
+		arr = new int[n];
+		for(int i=0; i<n; i++) {
+			arr[i] = sc.nextInt();
+		}
+		
+		for(int i=0; i<arr.length; i++) {
+			dfs(i, arr[i]);
+		}
+		
+		System.out.println(ans);
+		
+	}
+	
+	void dfs(int idx, int sum) {
+		if(sum==s) {
+			ans++;
+		}
+		
+		for(int i=idx+1; i<arr.length; i++) {
+			dfs(i, sum+arr[i]);
+		}
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		Main main = new Main();
+		main.process();
+	}
 }
