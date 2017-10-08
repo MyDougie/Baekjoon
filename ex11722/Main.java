@@ -10,30 +10,26 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
 		
-		int arr [] = new int[n];
-		int dp [] = new int[n];
+		int arr [] = new int[n+1];
+		int dp [] = new int[n+1];
 		
-		int max = 0;
-		
-		for(int i=0; i<n; i++){
+		for(int i=1; i<=n; i++){
 			arr[i] = sc.nextInt();
 		}
 		
-		for(int i=0; i<n; i++){
-			int min = 0;
+		int ans=0;
+		
+		for(int i=1; i<=n; i++){
+			dp[i] = 1;
 			for(int j=0; j<i; j++){
-				if(arr[j] > arr[i]){
-					if(dp[j] > min)
-						min = dp[j];
+				if(arr[j] > arr[i] && dp[j] + 1 > dp[i] ){
+					dp[i] = dp[j] + 1;
 				}
 			}
-			dp[i] = min + 1;
-			if(max < dp[i]){
-				max = dp[i];
-			}
+			ans = Math.max(ans, dp[i]);
 		}
 		
-		System.out.println(max);
+		System.out.println(ans);
 	}
 
 }
