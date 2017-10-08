@@ -1,5 +1,8 @@
 package ex2747;
 
+/**
+ * 피보나치 수열 - 2017/10/08 - Park Taegyu
+ * */
 import java.util.Scanner;
 
 public class Main {
