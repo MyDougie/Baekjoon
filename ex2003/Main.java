@@ -24,7 +24,7 @@ public class Main {
 	void process() {
 		input();
 		
-		int sum;
+		/*int sum;
 		for(int i=0; i<arr.length; i++) {
 			sum=0;
 			for(int j=i; j<arr.length; j++) {
@@ -36,6 +36,27 @@ public class Main {
 					ans++;
 					break;
 				}
+				
+			}
+		}*/
+		
+		int left=0, right=0;
+		int sum=0;
+		while(left<=right && right<=arr.length) {
+			
+			if(sum < m) {
+				if(right == arr.length) break;
+				sum += arr[right];
+				right++;
+			}else if(sum > m) {
+				sum -= arr[left];
+				left++;
+			}
+			else {
+				ans++;
+				if(right == arr.length) break;
+				sum += arr[right];
+				right++;
 				
 			}
 		}
