@@ -1,79 +1,67 @@
 package ex1916;
 
 /**
- * BFS(토마토) - 2017/10/27 - Park Taegyu
+ * Dijkstra(최소비용 구하기) - 2017/10/28 - Park Taegyu
  * */
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
-	static int m, n;
-	static int[][] map;
-	static boolean[][] visited;
-	static int ans;
-	static Queue<Pair> q = new LinkedList<>();
-	static int[] dx = {-1, 0, 1, 0};
-	static int[] dy = {0, 1, 0, -1};
+	static int n;
+	static List<Node> graph[];
+	static int[] cost;
+	static int INF = 987654321;
 	
-	static class Pair{
-		int x, y, breath;
-		Pair(int x, int y, int breath){
-			this.x = x;
-			this.y = y;
-			this.breath = breath;
+	static class Node{
+		int v, w;
+		Node(int v, int w){
+			this.v = v;
+			this.w = w;
 		}
 	}
 	
-	static void bfs() {
+	static void dijkstra(int start, int end) {
+		Queue<Integer> q = new LinkedList<>();
+		q.add(start);
+		
 		while(!q.isEmpty()) {
-			Pair p = q.poll();
-			ans = p.breath;
+			int s = q.poll();
 			
-			for(int i=0; i<4; i++) {
-				int nx = p.x + dx[i];
-				int ny = p.y + dy[i];
+			for(int i=0; i<graph[s].size(); i++) {
+				Node e = graph[s].get(i);
 				
-				if(nx<0 || ny<0 || nx>=n || ny>=m) continue;
-				if(visited[nx][ny]) continue;
-				
-				if(map[nx][ny]==0) {
-					visited[nx][ny] = true;
-					q.add(new Pair(nx, ny, p.breath+1));
+				if(cost[e.v] > cost[s] + e.w) {
+					cost[e.v] = cost[s] + e.w;
+					q.add(e.v);
 				}
 			}
-			
 		}
 	}
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		m = sc.nextInt();
 		n = sc.nextInt();
-		map = new int[n][m];
-		visited = new boolean[n][m];
-		
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<m; j++) {
-				map[i][j] = sc.nextInt();
-				if(map[i][j]==1) {
-					visited[i][j] = true;
-					q.add(new Pair(i, j, 0));
-				}
-			}
+		graph = new ArrayList[n+1];
+		cost = new int[n+1];
+		for(int i=1; i<=n; i++) {
+			graph[i] = new ArrayList<>();
+			cost[i] = INF;
 		}
 		
-		bfs();
-		
-		for(int i=0; i<n; i++) {
-			for(int j=0; j<m; j++) {
-				if(!visited[i][j] && map[i][j]==0) {
-					ans = -1;
-				}
-			}
+		int m = sc.nextInt();
+		for(int i=0; i<m; i++) {
+			int start = sc.nextInt();
+			int end = sc.nextInt();
+			int weight = sc.nextInt();
+			graph[start].add(new Node(end, weight));
 		}
-		System.out.println(ans);
+		
+		int start = sc.nextInt();
+		int end = sc.nextInt();
+		cost[start] = 0;
+		
+		dijkstra(start, end);
+		System.out.println(cost[end]);
 	}
 
 }
