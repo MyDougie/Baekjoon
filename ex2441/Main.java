@@ -1,10 +1,10 @@
 package ex2441;
 
-import java.util.Scanner;
-
 /**
  * 별 찍기-4 - 2017/10/30 - Park Taegyu
  * */
+import java.util.Scanner;
+
 public class Main {
 
 	public static void main(String[] args) {
