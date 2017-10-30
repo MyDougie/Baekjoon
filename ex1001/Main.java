@@ -1,7 +1,7 @@
 package ex1001;
 
 /**
- * 뺄셈 - 2017/10/30 - Park Taegyu
+ * A-B - 2017/10/30 - Park Taegyu
  * */
 import java.util.Scanner;
 
